@@ -1,31 +1,30 @@
 <template>
 <div class="container" >
-  <div class="flex flex-col justify-center items-center h-screen gap-16">
+  <div class="flex flex-col items-center mt-24 gap-16">
     <h1 class="text-4xl">نمایش وضعیت آب و هوا</h1>
     <div class="flex w-1/2">
       <input v-model="city" type="text" class="block focus:outline-0 p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="اسم شهر را وارد کنید" >
       <button @click="getData()" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-l-lg">ارسال</button>
     </div>
-    <div>
+    
+      <div class="bg-green-200 text-green-600 text-center w-full p-4" v-if="state.result[0]">
+        <div class="flex items-center"><span>شهر: </span><span>{{ state.result[0].name }} </span><span><img :src="`http://openweathermap.org/img/w/${state.result[0].weather[0].icon}.png`" :alt="state.result[0].name"></span></div>
+        <div><span>وضعیت: </span><span>{{ state.result[0].weather[0].description }}</span></div>
+        <div><span>دما: </span><span>{{ state.result[0].main.temp }}</span></div>
+        <div><span>رطوبت: </span><span>{{ state.result[0].main.humidity }}</span></div>
+      </div>
+    
+        <p v-if="errors" class="w-full bg-red-200 text-red-600 text-center p-4">
+          {{ errors }}
+        </p>
 
-      <ul>
-        <li class="flex items-center"><span>شهر: </span> <span>{{ result.name }}</span><span><img :src="`http://openweathermap.org/img/w/${result.weather[0].icon}.png`" :alt="result.name"></span></li>
-        <li><span>وضعیت: </span><span>{{ result.weather[0].description }}</span></li>
-        <li><span>دما: </span><span>{{ result.main.temp }}</span></li>
-        <li><span>رطوبت: </span><span>{{ result.main.humidity }}</span></li>
-      </ul>
-
-      <!-- <img :src="`http://openweathermap.org/img/w/${result.weather[0].icon}.png`" alt=""> -->
-      <!-- <p><span>وضعیت: </span> {{ result.weather[0].description }}</p> -->
-
-
-    </div>
+    
   </div>
 </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from './plugins/axios.js'
 import { reactive, ref } from '@vue/reactivity'
 
 export default {
@@ -35,12 +34,14 @@ export default {
 
     const city = ref('')
 
-    const result = ref('')
+    const errors = ref(null)
+
+    const state = reactive({
+      result : []
+    })
 
     const getData = () => {
-      // axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${API_KEY}&lang=fa`)
-      // .then((res) => result.value = res)
-      axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
+      axios.get(`/weather`, {
         params: {
           q: city.value,
           appid: API_KEY,
@@ -48,7 +49,16 @@ export default {
           lang: 'fa'
         }
       }).then(({ data }) => {
-        result.value = data
+        errors.value = null
+        console.log(data);
+        state.result.push(data)
+        city.value = null
+      })
+      .catch(({ response }) => {
+        if (response.data) {
+          state.result = []
+          errors.value = response.data.message
+        }
       })
     }
     
@@ -61,8 +71,9 @@ export default {
 
     return {
       getData,
-      result,
-      city
+      city,
+      state,
+      errors
     }
   }
 }

@@ -1,7 +1,6 @@
 @tailwind base;
 
 @layer base{
-  /* IRANSansX ***/
   @font-face {
       font-family: IRANSansX;
       font-style: normal;
