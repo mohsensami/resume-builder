@@ -5,22 +5,22 @@
       font-family: IRANSansX;
       font-style: normal;
       font-weight: 600;
-      src: url('./fonts/IRANSans/woff/IRANSansWeb(FaNum)_Boldwoff') format('woff'),
-      url('./fonts/IRANSans/woff2/IRANSansWeb(FaNum)_Boldwoff2') format('woff2');
+      src: url('../public/fonts/IRANSans/woff/IRANSansWeb(FaNum)_Boldwoff') format('woff'),
+      url('../public/fonts/IRANSans/woff2/IRANSansWeb(FaNum)_Boldwoff2') format('woff2');
   }
   @font-face {
       font-family: IRANSansX;
       font-style: normal;
       font-weight: 500;
-      src: url('./fonts/IRANSans/woff/IRANSansWeb(FaNum)_Medium.woff') format('woff'),
-      url('./fonts/IRANSans/woff2/IRANSansWeb(FaNum)_Medium.woff2') format('woff2');
+      src: url('../public/fonts/IRANSans/woff/IRANSansWeb(FaNum)_Medium.woff') format('woff'),
+      url('../public/fonts/IRANSans/woff2/IRANSansWeb(FaNum)_Medium.woff2') format('woff2');
   }
   @font-face {
       font-family: IRANSansX;
       font-style: normal;
       font-weight: 400;
-      src: url('./fonts/IRANSans/woff/IRANSansWeb(FaNum).woff') format('woff'),
-      url('./fonts/IRANSans/woff2/IRANSansWeb(FaNum).woff2') format('woff2');
+      src: url('../public/fonts/IRANSans/woff/IRANSansWeb(FaNum).woff') format('woff'),
+      url('../public/fonts/IRANSans/woff2/IRANSansWeb(FaNum).woff2') format('woff2');
   }
 
 }
