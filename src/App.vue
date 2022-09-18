@@ -1,10 +1,10 @@
 <template>
 <div class="container" >
   <div class="flex flex-col items-center mt-24 gap-16">
-    <h1 class="text-4xl">نمایش وضعیت آب و هوا</h1>
+    <h1 class="text-4xl text-white">نمایش وضعیت آب و هوا</h1>
     <div class="flex w-1/2">
-      <input v-model="city" type="text" class="flex-1 block focus:outline-0 p-2.5 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="اسم شهر را وارد کنید" >
-      <button @click="getData()" :class="{'cursor-not-allowed' : loading}" class=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-l-lg flex items-center">
+      <input v-on:keyup.enter="getData()" v-model="city" type="text" class="flex-1 block focus:outline-0 p-2.5 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="اسم شهر را وارد کنید" >
+      <button v-on:click="getData()"  :class="{'cursor-not-allowed' : loading}" class=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-l-lg flex items-center">
         {{ !loading ? 'ارسال' : 'درحال دریافت اطلاعات' }}
         <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
