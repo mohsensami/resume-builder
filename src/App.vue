@@ -2,8 +2,8 @@
 <div class="container" >
   <div class="flex flex-col items-center mt-24 gap-16">
     <h1 class="text-4xl text-white">نمایش وضعیت آب و هوا</h1>
-    <div class="flex sm:w-1/2 w-3/4" >
-      <input v-on:keyup.enter="getData()" v-model="city" type="text" class="flex-1 block focus:outline-0 p-2.5 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="اسم شهر را وارد کنید" >
+    <div class="flex md:w-1/2 w-3/4" >
+      <input ref="inputPointer" v-on:keyup.enter="getData()" v-model="city" type="text" class="flex-1 block focus:outline-0 p-2.5 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="اسم شهر را وارد کنید" >
       <button v-on:click="getData()"  :class="{'cursor-not-allowed' : loading}" class=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-l-lg flex items-center">
         {{ !loading ? 'ارسال' : 'درحال دریافت اطلاعات' }}
         <svg v-if="loading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -13,20 +13,6 @@
       </button>
     </div>
     
-      <!-- <div class="bg-green-200 text-green-600 text-center w-full p-4" v-if="state.result[0]">
-        <div class="flex items-center"><span>شهر: </span><span>{{ state.result[0].name }} </span><span><img :src="`http://openweathermap.org/img/w/${state.result[0].weather[0].icon}.png`" :alt="state.result[0].name"></span></div>
-        <div><span>وضعیت: </span><span>{{ state.result[0].weather[0].description }}</span></div>
-        <div><span>دما: </span><span>{{ state.result[0].main.temp }}</span></div>
-        <div><span>رطوبت: </span><span>{{ state.result[0].main.humidity }}</span></div>
-      </div> -->
-
-
-
-
-
-
-
-
 
 
       <div v-if="state.result[0]" class="p-4 w-full max-w-sm bg-white bg-opacity-30 rounded-lg border shadow-md sm:p-6 dark:bg-gray-800 dark:border-gray-700">
@@ -37,7 +23,6 @@
             <li>
                 <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>وضعیت: </span><span>{{ state.result[0].weather[0].description }}</span></span>
-                    <span class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Popular</span>
                 </a>
             </li>
             <li>
@@ -88,13 +73,14 @@
 
 <script>
 import axios from './plugins/axios.js'
-import { reactive, ref } from '@vue/reactivity'
+import { reactive, ref, onMounted, nextTick } from 'vue'
 import timeConvert from './utils/unixTimeConvert.js';
 
 export default {
   name: 'App',
   setup() {
-    const API_KEY = 'ab3d8a663bf1ef42a7f37d1641a6982e'
+    const API_KEY = 'ab3d8a663bf1ef42a7f37d1641a6982e';
+    const inputPointer = ref(null);
     const loading = ref(false);
     const city = ref('');
     const errors = ref(null);
@@ -129,12 +115,21 @@ export default {
         }
       })
     }
+
+onMounted(() => {
+    nextTick(() => {
+      inputPointer.value.focus();
+    });
+  });
+
+
     return {
       getData,
       city,
       state,
       errors,
       loading,
+      inputPointer,
       timeConvert
     }
   }
