@@ -15,33 +15,38 @@
     
 
 
-      <div v-if="state.result[0]" class="p-4 w-full max-w-sm bg-white bg-opacity-30 rounded-lg border shadow-md sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+      <div v-if="state.result[0]" class="p-4 w-full max-w-sm bg-white bg-opacity-30 rounded-lg border shadow-md sm:p-6">
         <h5 class="flex items-center mb-3 text-base text-gray-900 md:text-xl dark:text-white">
           <span><img class="ml-2" width="20" :src="`http://openweathermap.org/images/flags/${state.result[0].sys.country.toLowerCase()}.png`" :alt="state.result[0].name"></span><span>{{ state.result[0].name }} </span><span><img :src="`http://openweathermap.org/img/w/${state.result[0].weather[0].icon}.png`" :alt="state.result[0].name"></span>
         </h5>
         <ul class="my-4 space-y-3">
             <li>
-                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>وضعیت: </span><span>{{ state.result[0].weather[0].description }}</span></span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>دما: </span><span>{{ state.result[0].main.temp }}</span></span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>رطوبت: </span><span>{{ state.result[0].main.humidity }}</span></span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
+                    <span class="flex-1 ml-3 whitespace-nowrap"><span>سرعت باد: </span><span>{{ state.result[0].wind.speed }}</span></span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>طلوع آفتاب: </span><span>{{ timeConvert(state.result[0].sys.sunrise) }}</span></span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                <a href="#" class="flex items-center p-3 text-base text-gray-900 bg-white bg-opacity-50 rounded-lg hover:bg-opacity-60 group">
                     <span class="flex-1 ml-3 whitespace-nowrap"><span>غروب آفتاب: </span><span>{{ timeConvert(state.result[0].sys.sunset) }}</span></span>
                 </a>
             </li>
