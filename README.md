@@ -1,42 +1,8 @@
-# vue-weather-app
+# React + Vite
 
-## Project setup
-```
-npm install
-```
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Currently, two official plugins are available:
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### App Preview :
-
-<table width="100%"> 
-<tr>
-<td width="50%">      
-&nbsp; 
-<br>
-<p align="center">
-  Home Hage
-</p>
-<img src="https://github.com/mohsensami/weather-app/blob/main/screenshots/start.png?raw=true">
-</td> 
-<td width="50%">
-<br>
-<p align="center">
-  After Search
-</p>
-<img src="https://github.com/mohsensami/weather-app/blob/main/screenshots/end.png?raw=true">  
-</td>
-</table>
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
