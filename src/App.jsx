@@ -1,7 +1,12 @@
+import { useUser } from '@clerk/clerk-react';
 import './App.css';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 function App() {
+    const { user, isLoaded, isSignedIn } = useUser();
+    if (!isSignedIn && isLoaded) {
+        return <Navigate to={'/auth/sign-in'} />;
+    }
     return (
         <>
             <Outlet />
