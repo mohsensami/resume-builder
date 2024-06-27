@@ -4,7 +4,7 @@ import PersonalDetailPreview from './preview/PersonalDetailPreview';
 import SummeryPreview from './preview/SummeryPreview';
 import ExperiencePreview from './preview/ExperiencePreview';
 import EducationalPreview from './preview/EducationalPreview';
-// import SkillsPreview from './preview/SkillsPreview';
+import SkillsPreview from './preview/SkillsPreview';
 
 function ResumePreview() {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -26,7 +26,7 @@ function ResumePreview() {
             {/* Educational  */}
             {resumeInfo?.education?.length > 0 && <EducationalPreview resumeInfo={resumeInfo} />}
             {/* Skilss  */}
-            {/* {resumeInfo?.skills?.length > 0 && <SkillsPreview resumeInfo={resumeInfo} />} */}
+            {resumeInfo?.skills?.length > 0 && <SkillsPreview resumeInfo={resumeInfo} />}
         </div>
     );
 }
