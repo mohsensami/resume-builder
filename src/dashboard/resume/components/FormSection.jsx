@@ -44,6 +44,8 @@ function FormSection() {
                 </div>
             </div>
             {/* Personal Detail  */}
+            <PersonalDetail enabledNext={(v) => setEnableNext(v)} />
+
             {/* {activeFormIndex == 1 ? (
                 <PersonalDetail enabledNext={(v) => setEnableNext(v)} />
             ) : activeFormIndex == 2 ? (
