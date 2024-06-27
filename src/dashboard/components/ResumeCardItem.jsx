@@ -74,7 +74,7 @@ function ResumeCardItem({ resume, refreshData }) {
                     background: resume?.themeColor,
                 }}
             >
-                <h2 className="text-sm">{resume.title}</h2>
+                <h2 className="text-sm text-black">{resume.title}</h2>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger>
