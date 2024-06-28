@@ -1,17 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface SkillsSkills extends Struct.ComponentSchema {
-  collectionName: 'components_skills_skills';
-  info: {
-    displayName: 'Skills';
-    icon: 'apps';
-  };
-  attributes: {
-    name: Schema.Attribute.String;
-    rating: Schema.Attribute.Integer;
-  };
-}
-
 export interface EducationEducation extends Struct.ComponentSchema {
   collectionName: 'components_education_educations';
   info: {
@@ -28,11 +16,23 @@ export interface EducationEducation extends Struct.ComponentSchema {
   };
 }
 
+export interface SkillsSkills extends Struct.ComponentSchema {
+  collectionName: 'components_skills_skills';
+  info: {
+    displayName: 'Skills';
+    icon: 'apps';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    rating: Schema.Attribute.Integer;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'skills.skills': SkillsSkills;
       'education.education': EducationEducation;
+      'skills.skills': SkillsSkills;
     }
   }
 }
