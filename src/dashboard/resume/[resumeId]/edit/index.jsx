@@ -8,17 +8,17 @@ import GlobalApi from './../../../../../service/GlobalApi';
 
 function EditResume() {
     const { resumeId } = useParams();
-    const [resumeInfo, setResumeInfo] = useState(dummy);
-    // useEffect(() => {
-    //     GetResumeInfo();
-    // }, []);
+    const [resumeInfo, setResumeInfo] = useState();
+    useEffect(() => {
+        GetResumeInfo();
+    }, []);
 
-    // const GetResumeInfo = () => {
-    //     GlobalApi.GetResumeById(resumeId).then((resp) => {
-    //         console.log(resp.data.data);
-    //         setResumeInfo(resp.data.data);
-    //     });
-    // };
+    const GetResumeInfo = () => {
+        GlobalApi.GetResumeById(resumeId).then((resp) => {
+            console.log(resp.data.data);
+            setResumeInfo(resp.data.data);
+        });
+    };
 
     return (
         <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
